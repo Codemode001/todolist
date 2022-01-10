@@ -1,22 +1,21 @@
 .home-main {
+  /*layout*/
+  display: grid;
+  row-gap: 15px;
+  place-items: center;
 
-    /*layout*/
-    display: grid;
-    row-gap: 15px;
-    place-items: center;
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
 
-    h1 {
-        margin: 0;
-        padding: 0;
-    }
-
-    button {
-        border: none;
-        height: 50px;
-        width: 100px;
-        cursor: pointer;
-        background: gray;
-        color: white;
-        border-radius: 10px;
-    }
+  button {
+    border: none;
+    height: 50px;
+    width: 100px;
+    cursor: pointer;
+    background: gray;
+    color: white;
+    border-radius: 10px;
+  }
 }
