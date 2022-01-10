@@ -1,0 +1,22 @@
+/*default*/
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/*global*/
+* {
+    font-family: 'century gothic';
+}
+
+.App-Main {
+    height: 100vh;
+
+    /*layout*/
+    display: grid;
+    place-items: center;
+
+
+    @import './home.scss';
+    @import './todolist.scss';
+}
