@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="App-Main">
       <Switch>
-       <Route path="/todo">
+        <Route path="/todo">
           <ToDo />
         </Route>
         <Route exact path="/">

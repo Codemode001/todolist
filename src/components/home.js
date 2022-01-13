@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 const Home = () => {
   const history = useHistory();
@@ -12,8 +12,10 @@ const Home = () => {
   return (
     <div className="home-main">
       <h1>you are in home</h1>
-      <Button onClick={handleOnClick} variant="text">Text</Button>
-     </div>
+      <Button onClick={handleOnClick} variant="text">
+        Start now!
+      </Button>
+    </div>
   );
 };
 export default Home;

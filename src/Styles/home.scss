@@ -1,8 +1,6 @@
 .home-main {
   /*layout*/
   display: grid;
-  row-gap: 15px;
-  place-items: center;
 
   h1 {
     margin: 0;
@@ -10,7 +8,6 @@
   }
 
   button {
-    border: none;
     height: 50px;
     width: 100px;
     cursor: pointer;
