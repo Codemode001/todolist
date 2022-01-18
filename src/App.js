@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 
 import Home from "./components/home";
 import ToDo from "./components/todolist";
-import SharedTable from "./components/table";
 import Login from "./views/Login/login"
 
 const App = () => {
@@ -18,9 +17,6 @@ const App = () => {
         </Route>
         <Route exact path="/login">
           <Login />
-        </Route>
-        <Route exact path="/table">
-          <SharedTable />
         </Route>
       </Switch>
     </div>

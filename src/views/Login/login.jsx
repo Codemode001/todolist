@@ -64,7 +64,7 @@ const Login = () => {
               <Button
                 type="primary"
                 htmlType="submit"
-                onClick={() => history.push("/table")}
+                onClick={() => history.push("/")}
               >
                 Submit
               </Button>
