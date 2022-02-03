@@ -9,11 +9,13 @@ import {
 } from "@ant-design/icons";
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { SubMenu, Item } = Menu;
 
 const ToDo = () => {
   const [collapsed, setCollapsed] = useState(false);
-
+  const [isOption1, setIsOption1] = useState(false);
+  const [isOption2, setIsOption2] = useState(false);
+  
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
@@ -23,40 +25,71 @@ const ToDo = () => {
       >
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
+          <Item
+            key="1"
+            icon={<PieChartOutlined />}
+            onClick={() => {
+              setIsOption1(true);
+              setIsOption2(false);
+            }}
+          >
             Option 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
+          </Item>
+          <Item
+            key="2"
+            icon={<DesktopOutlined />}
+            onClick={() => {
+              setIsOption1(false);
+              setIsOption2(true);
+            }}
+          >
             Option 2
-          </Menu.Item>
+          </Item>
           <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
+            <Item key="3">Tom</Item>
+            <Item key="4">Bill</Item>
+            <Item key="5">Alex</Item>
           </SubMenu>
           <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-            <Menu.Item key="6">Team 1</Menu.Item>
-            <Menu.Item key="8">Team 2</Menu.Item>
+            <Item key="6">Team 1</Item>
+            <Item key="8">Team 2</Item>
           </SubMenu>
-          <Menu.Item key="9" icon={<FileOutlined />}>
+          <Item key="9" icon={<FileOutlined />}>
             Files
-          </Menu.Item>
+          </Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }} />
-        <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div
-            className="site-layout-background"
-            style={{ padding: 24, minHeight: 360 }}
-          >
-            Bill is a cat.
-          </div>
-        </Content>
+        {isOption1 ? (
+          <Content style={{ margin: "0 16px" }}>
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              Option 1
+            </div>
+          </Content>
+        ) : null}
+        {isOption2 ? (
+          <Content style={{ margin: "0 16px" }}>
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              Option 2
+            </div>
+          </Content>
+        ) : null}
+
         <Footer style={{ textAlign: "center" }}>
           Ant Design ©2018 Created by Ant UED
         </Footer>
