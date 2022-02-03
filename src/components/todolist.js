@@ -1,64 +1,67 @@
 import React, { useState } from "react";
+import { Layout, Menu, Breadcrumb } from "antd";
+import {
+  DesktopOutlined,
+  PieChartOutlined,
+  FileOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+
+const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu;
 
 const ToDo = () => {
-  const [state, setState] = useState({
-    todo: "",
-    todolist: [],
-  });
-
-  const { todo, todolist } = state;
-
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-
-    setState({ ...state, [name]: value });
-  };
-
-  const createTodo = () => {
-    const list = todolist;
-    list.push(todo);
-
-    setState({ ...state, todolist: list });
-  };
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="todo-main">
-      <div className="form-wrapper">
-        <input
-          type="text"
-          name="todo"
-          placeholder="Create TodoList"
-          value={todo}
-          onChange={handleOnChange}
-        />
-        <button onClick={createTodo}>Add</button>
-      </div>
-      <div className="Table-main">
-        <div className="header-wrapper">
-          <span>Todo</span>
-          <span>Actions</span>
-        </div>
-        {todolist.lenght ? (
-          todolist.map((value, index) => {
-            return (
-              <div className="row-wrapper">
-                <span>Do my home work</span>
-                <button>Edit</button>
-                <button>Delete</button>
-              </div>
-            );
-          })
-        ) : (
-          <span>No records found!</span>
-        )}
-
-        <div className="row-wrapper">
-          <span>Do my home work</span>
-          <button>Edit</button>
-          <button>Delete</button>
-        </div>
-      </div>
-    </div>
+    <Layout style={{ minHeight: "100vh" }}>
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={() => setCollapsed(!collapsed)}
+      >
+        <div className="logo" />
+        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+          <Menu.Item key="1" icon={<PieChartOutlined />}>
+            Option 1
+          </Menu.Item>
+          <Menu.Item key="2" icon={<DesktopOutlined />}>
+            Option 2
+          </Menu.Item>
+          <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+            <Menu.Item key="3">Tom</Menu.Item>
+            <Menu.Item key="4">Bill</Menu.Item>
+            <Menu.Item key="5">Alex</Menu.Item>
+          </SubMenu>
+          <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
+            <Menu.Item key="6">Team 1</Menu.Item>
+            <Menu.Item key="8">Team 2</Menu.Item>
+          </SubMenu>
+          <Menu.Item key="9" icon={<FileOutlined />}>
+            Files
+          </Menu.Item>
+        </Menu>
+      </Sider>
+      <Layout className="site-layout">
+        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Content style={{ margin: "0 16px" }}>
+          <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb.Item>User</Breadcrumb.Item>
+            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+          </Breadcrumb>
+          <div
+            className="site-layout-background"
+            style={{ padding: 24, minHeight: 360 }}
+          >
+            Bill is a cat.
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>
+          Ant Design ©2018 Created by Ant UED
+        </Footer>
+      </Layout>
+    </Layout>
   );
 };
 export default ToDo;
